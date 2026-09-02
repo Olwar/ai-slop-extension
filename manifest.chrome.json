@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "AI Writing Signs",
+  "version": "1.0.0",
+  "description": "Highlights telltale signs of AI-generated writing on any page. One click to turn off.",
+  "icons": { "16": "icons/16.png", "48": "icons/48.png", "128": "icons/128.png" },
+  "permissions": ["storage", "activeTab"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "AI Writing Signs",
+    "default_icon": { "16": "icons/16.png", "48": "icons/48.png", "128": "icons/128.png" }
+  },
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["rules.js", "content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "toggle": {
+      "suggested_key": { "default": "Alt+Shift+A" },
+      "description": "Toggle AI writing highlights"
+    }
+  }
+}

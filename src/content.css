@@ -1,0 +1,53 @@
+mark.aiw-mark {
+  position: relative;
+  color: inherit;
+  font: inherit;
+  padding: 0 2px;
+  border-radius: 3px;
+  background: rgba(255, 224, 130, 0.55);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  cursor: help;
+}
+mark.aiw-mark.aiw-strong {
+  background: rgba(255, 202, 40, 0.75);
+}
+mark.aiw-mark.aiw-weak {
+  background: rgba(255, 236, 179, 0.5);
+}
+mark.aiw-mark .aiw-count {
+  display: inline-block;
+  min-width: 1.15em;
+  height: 1.15em;
+  line-height: 1.15em;
+  margin-left: 4px;
+  padding: 0 3px;
+  border-radius: 999px;
+  background: #8b3a0e;
+  color: #fff;
+  font-size: 0.7em;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+mark.aiw-mark:hover {
+  background: rgba(255, 179, 0, 0.85);
+}
+mark.aiw-mark:hover::after {
+  content: attr(data-aiw-label);
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 6px);
+  z-index: 2147483647;
+  white-space: nowrap;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #1b1b1b;
+  color: #fff;
+  font: 500 13px/1.3 system-ui, -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: 0;
+  text-transform: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}

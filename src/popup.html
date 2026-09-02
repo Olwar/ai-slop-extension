@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root { color-scheme: light dark; }
+  body { margin: 0; width: 260px; font: 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; background: #fffdf5; color: #222; }
+  @media (prefers-color-scheme: dark) { body { background: #1e1c14; color: #eee; } .row { border-color: #3a3628 !important; } .cats li { color: #bbb !important; } }
+  h1 { font-size: 15px; margin: 0; padding: 12px 14px 8px; display: flex; align-items: center; gap: 8px; }
+  h1 .dot { width: 10px; height: 10px; border-radius: 50%; background: #ffca28; display: inline-block; }
+  .row { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-top: 1px solid #f0e6c8; }
+  .row label { flex: 1; cursor: pointer; }
+  .row small { display: block; opacity: 0.65; font-size: 12px; }
+  .switch { position: relative; width: 40px; height: 22px; flex: none; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .slider { position: absolute; inset: 0; background: #bbb; border-radius: 22px; transition: .15s; cursor: pointer; }
+  .slider::before { content: ""; position: absolute; width: 16px; height: 16px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: .15s; }
+  input:checked + .slider { background: #f0a500; }
+  input:checked + .slider::before { transform: translateX(18px); }
+  .stats { padding: 10px 14px; border-top: 1px solid #f0e6c8; }
+  .stats .total { font-size: 22px; font-weight: 700; }
+  .stats .total span { font-size: 12px; font-weight: 400; opacity: 0.7; margin-left: 6px; }
+  .cats { list-style: none; margin: 6px 0 0; padding: 0; font-size: 12px; }
+  .cats li { display: flex; justify-content: space-between; color: #555; padding: 1px 0; }
+  .foot { padding: 8px 14px 12px; font-size: 11px; opacity: 0.6; border-top: 1px solid #f0e6c8; }
+  .foot a { color: inherit; }
+  kbd { font: 11px ui-monospace, monospace; border: 1px solid currentColor; border-radius: 3px; padding: 0 4px; opacity: 0.8; }
+</style>
+</head>
+<body>
+  <h1><span class="dot"></span> AI Writing Signs</h1>
+
+  <div class="row">
+    <label for="enabled">Highlight AI signs <small>Global on/off · <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd></small></label>
+    <span class="switch"><input type="checkbox" id="enabled"><span class="slider"></span></span>
+  </div>
+
+  <div class="row">
+    <label for="site">Enable on this site <small id="host">…</small></label>
+    <span class="switch"><input type="checkbox" id="site"><span class="slider"></span></span>
+  </div>
+
+  <div class="row">
+    <label for="weak">Show weak signals <small>Common words, em dashes, rule of three</small></label>
+    <span class="switch"><input type="checkbox" id="weak"><span class="slider"></span></span>
+  </div>
+
+  <div class="stats">
+    <div class="total"><b id="total">0</b><span>marks on this page</span></div>
+    <ul class="cats" id="cats"></ul>
+  </div>
+
+  <div class="foot">Based on <a href="https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing" target="_blank">Wikipedia: Signs of AI writing</a>. Hover a mark to see why.</div>
+
+  <script src="rules.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
